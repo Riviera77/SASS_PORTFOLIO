@@ -1,0 +1,8 @@
+{
+	"liveSassCompile.settings.excludeList": [
+		// Add your excluded paths here
+		"/**/node_modules/**",
+		"/.vscode/**",
+		"/**/lib/**"
+	]
+}
