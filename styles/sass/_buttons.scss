@@ -1,0 +1,45 @@
+//créer une fonction qui va utiliser la méthode darken() de Sass pour assombrir la couleur de fond de notre bouton lorsqu'on passe dessus avec la souris.
+@function darkenborder($color) {
+	@return darken($color, 20%);
+}
+
+//Création d'une fonction qui va générer la couleurs des boutons automatiquement
+@function getFontColor($bgColor) {
+	@if (lightness($bgColor) > 50%) {
+		@return $dark;
+	} @else {
+		@return $white;
+	}
+}
+
+.btn {
+	padding: 15px 30px;
+	border: solid 1px;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 18px;
+	font-weight: bold;
+	text-transform: uppercase;
+	transition: all ease 0.3s;
+	&:hover {
+		background-color: $white;
+		color: $primary;
+		transform: translateY(-10px);
+	}
+
+	//Création d'une boucle each qui va reprendre la fonction getFontColor()
+	//pour générer la couleur de la police de caractère en fonction de la couleur de fond du bouton
+	@each $name, $color in $colors {
+		&.btn-#{$name} {
+			background-color: $color;
+			border-color: darkenBorder($color); // Ajuste le pourcentage selon le besoin
+			color: getFontColor($color);
+
+			&:hover {
+				$bg-hover: lighten($color, 20%);
+				background-color: $bg-hover;
+				color: getFontColor($bg-hover);
+			}
+		}
+	}
+}

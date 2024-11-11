@@ -7,6 +7,8 @@ $dark: #171c28;
 $white: #ffffff;
 $test: #b55a5a;
 
+//Création d'un tableau de variables couleurs pour générer une boucle each
+//qui va générer la couleurs des boutons automatiquement
 $colors: (
 	'primary': $primary,
 	'secondary': $secondary,
